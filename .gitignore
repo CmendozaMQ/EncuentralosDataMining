@@ -1,0 +1,9 @@
+# source #
+###################
+*.sqlite3
+*.pyc
+*.zip
+*.CSV
+fb_get_posts_page_multiple.py
+*.log
+datamining
