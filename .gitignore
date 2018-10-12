@@ -1,7 +1,0 @@
-# source #
-###################
-.gitignore
-*.pyc
-*.zip
-*.CSV
-*.log
