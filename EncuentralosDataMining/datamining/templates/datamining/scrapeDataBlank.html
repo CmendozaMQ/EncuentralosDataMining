@@ -1,0 +1,81 @@
+<!doctype html>
+{% load static %}
+
+
+<html lang="en">
+
+{% include "datamining\t_head_css.html" %}
+
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #105a7a;">
+{% include "datamining\t_navbar.html" %}
+   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home_setup' %}">Scraping Post Facebook <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'scrapeData_page' %}">Post Encontrados</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'scrapeDataBlank' %}">Posibles Posts Encontrados<span class="sr-only">(current)</span></a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'savePost_page' %}">Post Guardados</a>
+          </li>
+        </ul>
+      </div>
+</nav>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=354252898361153';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!--<H1>Dataminig Results with messages in blank</H1>-->
+
+<main role="main" class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
+        <!--<img class="mr-3" src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">-->
+        <div class="lh-100">
+          <h6 class="mb-0 text-white lh-100">Resultados SMM Facebook con mensajes en blanco</h6>
+          <!--<small>Since 2011</small>-->
+        </div>
+      </div>
+    <div class="col-md-3">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="glyphicon glyphicon-envelope"></span>
+            <span class="text-muted">Post encontrados</span>
+            <span class="badge badge-secondary badge-pill">{{ SDBCount }}</span>
+          </h4>
+     </div>
+
+{% for data in datainfoBlank.all %}
+<div class="my-3 p-3 bg-white rounded box-shadow text-center">
+
+<p>
+<form method="POST" action="{% url 'save_post' %}">
+    {% csrf_token %}
+<div class="fb-post" data-href="{{ data.status_link }}" data-width="500" data-show-text="true"></div>
+    <br>
+    <input type="hidden" name='id' value="{{ data.id }}"/><br>
+    <input type="submit" class="btn btn-success btn-lg btn btn-primary" value="Guardar Post"/>
+
+</form>
+<p>
+</div>
+{% endfor %}
+</main>
+<br>
+<br>
+
+<!-- <a href="{% url 'home' %}">new translation</a> -->
+
+{% include "datamining\t_javascript.html" %}
+</body>
+</html>

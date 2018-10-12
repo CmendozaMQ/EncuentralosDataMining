@@ -1,0 +1,310 @@
+<!doctype html>
+{% load static %}
+
+
+<html lang="en">
+
+{% include "datamining\t_head_css.html" %}
+
+<body class="bg-light">
+<nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #105a7a;">
+{% include "datamining\t_navbar.html" %}
+   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home_setup' %}">Scraping Post Facebook <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'scrapeData_page' %}">Post Encontrados</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'scrapeDataBlank' %}">Posibles Posts Encontrados </a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'savePost_page' %}">Post Guardados </a>
+          </li>
+        </ul>
+      </div>
+</nav>
+
+<div class="container">
+    <!--<div class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow" style="background-color: #1678a3;">-->
+        <!--&lt;!&ndash;<img class="mr-3" src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">&ndash;&gt;-->
+        <!--<div class="lh-100">-->
+          <!--<h6 class="mb-0 text-white lh-100">Encuentralos DataMining Facebook</h6>-->
+          <!--&lt;!&ndash;<small>Since 2011</small>&ndash;&gt;-->
+        <!--</div>-->
+      <!--</div>-->
+<!--<H1>Encuentralos DataMing Facebook</H1>-->
+
+
+<form action="{% url 'scrapeData' %}">
+    <div class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow" style="background-color: #98bf5a;">
+        <!--<img class="mr-3" src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">-->
+        <div class="lh-100">
+          <h6 class="mb-0 text-white lh-100">Id de Grupos en Facebook:</h6>
+          <!--<small>Since 2011</small>-->
+        </div>
+      </div>
+    <!--<h3>group id:</h3><br/>-->
+    <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" onClick="selectall(this)" id="01"/>
+            <label class="custom-control-label" for="01">Seleccionar Todos</label><br/>
+     </div>
+    <!--<input type="checkbox" name="groupId" value="1679152088981008"> <img src="https://graph.facebook.com/1679152088981008/picture"/> https://www.facebook.com/Personas-Desaparecidas-En-Bolivia<br>-->
+    <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId" id="02" value="155727921303318">
+        <img src="https://graph.facebook.com/155727921303318/picture"/>
+        <label class="custom-control-label" for="02">Personas Desaparecidas En Bolivia</label><br>
+    </div>
+        <!--https://www.facebook.com/DESAPARECIDOS.BOLIVIA/<br>-->
+     <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId" id="03" value="1581688172120894">
+         <img src="https://graph.facebook.com/1581688172120894/picture"/>
+         <label class="custom-control-label" for="03">Personas Desaparecidas Bolivia.</label> <br>
+     </div>
+        <!--https://www.facebook.com/Personas-Desaparecidas-Bolivia-1581688172120894/<br>-->
+     <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId" id="04" value="698664933555651">
+            <img src="https://graph.facebook.com/698664933555651/picture"/>
+            <label class="custom-control-label" for="04">Personas Desaparecidas Bolivia</label> <br>
+     </div>
+        <!--https://www.facebook.com/Personas-Desaparecidas-Bolivia-698664933555651/<br>-->
+     <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId" id="05" value="418809814867199">
+             <img src="https://graph.facebook.com/418809814867199/picture"/>
+             <label class="custom-control-label" for="05">Personas Desaparecidas Bolivia</label> <br>
+     </div>
+        <!--https://www.facebook.com/Personas-Desaparecidas-Bolivia-418809814867199<br>-->
+     <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="06" value="148068848661608">
+             <img src="https://graph.facebook.com/148068848661608/picture"/>
+             <label class="custom-control-label" for="06">Zarlet, la que ilumina</label> <br>
+     </div>
+        <!--https://www.facebook.com/Zarletlaqueilumina/<br>-->
+     <!--<div class="custom-control custom-checkbox">-->
+    <!--<input type="checkbox" checked=checked class="custom-control-input" name="groupId" id="07" value="1488860734744238">-->
+            <!--<img src="https://graph.facebook.com/1488860734744238/picture"/>-->
+            <!--<label class="custom-control-label" for="07">PERSONAS DESAPARECIDAS LA PAZ BOLIVIA</label><br>-->
+     <!--</div>-->
+        <!--https://www.facebook.com/groups/1488860734744238/<br>-->
+     <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="08" value="347412128664020">
+            <img src="https://graph.facebook.com/347412128664020/picture"/>
+            <label class="custom-control-label" for="08">Red De Lucha Contra La Trata Y Trafico De Personas En Tarija </label><br>
+     </div>
+        <!--https://www.facebook.com/rdlcttptja/<br>-->
+     <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="09" value="371963662997020">
+            <img src="https://graph.facebook.com/371963662997020/picture"/>
+            <label class="custom-control-label" for="09">Trata y Trafico</label><br>
+     </div>
+        <!--https://www.facebook.com/371963662997020/<br>-->
+     <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="10" value="409239835812482">
+            <img src="https://graph.facebook.com/409239835812482/picture"/>
+            <label class="custom-control-label" for="10">Lucha contra la TRATA y trafico de Personas en Bolivia</label><br>
+     </div>
+        <!--https://www.facebook.com/409239835812482/<br>-->
+      <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="11" value="494038460747737">
+            <img src="https://graph.facebook.com/494038460747737/picture"/>
+            <label class="custom-control-label" for="11">Trata y Trafico Bolivia</label><br>
+     </div>
+        <!--https://www.facebook.com/494038460747737/<br>-->
+      <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="12" value="1166243393392401">
+            <img src="https://graph.facebook.com/1166243393392401/picture"/>
+            <label class="custom-control-label" for="12">Desaparecidos Bolivia</label><br>
+     </div>
+        <!--https://www.facebook.com/1166243393392401/<br>-->
+
+      <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="13" value="128615597691040">
+            <img src="https://graph.facebook.com/128615597691040/picture"/>
+            <label class="custom-control-label" for="13">Desaparecidos Bolivia</label><br>
+     </div>
+        <!--https://www.facebook.com/128615597691040/<br>-->
+
+      <!--<div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="14" value="1331664930221301">
+            <img src="https://graph.facebook.com/1331664930221301/picture"/>
+            <label class="custom-control-label" for="14">Personas Desaparecidas Bolivia</label><br>
+     </div>
+        https://www.facebook.com/1331664930221301/<br>-->
+
+       <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="15" value="1679152088981008">
+            <img src="https://graph.facebook.com/1679152088981008/picture"/>
+            <label class="custom-control-label" for="15">Personas Desaparecidas En Bolivia</label><br>
+     </div>
+        <!--https://www.facebook.com/1679152088981008/<br>-->
+
+        <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="16" value="491330634281258">
+            <img src="https://graph.facebook.com/491330634281258/picture"/>
+            <label class="custom-control-label" for="16">Trata Y Trafico De Personas / Felcc-Oruro</label><br>
+     </div>
+        <!--https://www.facebook.com/491330634281258/<br>-->
+
+        <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="17" value="868135499943484">
+            <img src="https://graph.facebook.com/868135499943484/picture"/>
+            <label class="custom-control-label" for="17">Dónde estás</label><br>
+     </div>
+        <!--https://www.facebook.com/868135499943484/<br>-->
+
+        <div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="18" value="214695172608992">
+            <img src="https://graph.facebook.com/214695172608992/picture"/>
+            <label class="custom-control-label" for="18">Sedeges CBBA Bolivia</label><br>
+     </div>
+        <!--https://www.facebook.com/214695172608992/<br>-->
+
+          <!--<div class="custom-control custom-checkbox">
+    <input type="checkbox" checked=checked class="custom-control-input" name="groupId"  id="18" value="1488860734744238">
+            <img src="https://graph.facebook.com/1488860734744238/picture"/>
+            <label class="custom-control-label" for="18"></label><br>
+     </div>-->
+        <!--https://www.facebook.com/1488860734744238/<br>-->
+
+
+        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-secondary rounded box-shadow">
+        <!--<img class="mr-3" src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">-->
+        <div class="lh-100">
+          <h6 class="mb-0 text-white lh-100">Palabras clave:</h6>
+          <!--<small>Since 2011</small>-->
+        </div>
+      </div>
+        <!--checkboxs-->
+    <!--table-->
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <tbody>
+                <tr>
+                  <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="KeyWord" value="desaparecido" checked=checked class="custom-control-input" id="c1">
+                        <label class="custom-control-label" for="c1">desaparecido</label>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="KeyWord" value="desaparecida" checked=checked class="custom-control-input" id="c2">
+                        <label class="custom-control-label" for="c2">desaparecida</label>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="KeyWord" value="desaparecidos" checked=checked class="custom-control-input" id="c3">
+                        <label class="custom-control-label" for="c3">desaparecidos</label>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="KeyWord" value="desaparecidas" checked=checked class="custom-control-input" id="c4">
+                        <label class="custom-control-label" for="c4">desaparecidas</label>
+                      </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="KeyWord" value="extraviados" checked=checked class="custom-control-input" id="c5">
+                        <label class="custom-control-label" for="c5">extraviados</label>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="KeyWord" value="buscamos" checked=checked class="custom-control-input" id="c6">
+                        <label class="custom-control-label" for="c6">buscamos</label>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="KeyWord" value="desaparecio" checked=checked class="custom-control-input" id="c7">
+                        <label class="custom-control-label" for="c7">desaparecio</label>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="KeyWord" value="buscando" checked=checked class="custom-control-input" id="c8">
+                        <label class="custom-control-label" for="c8">buscando</label>
+                      </div>
+                  </td>
+                </tr>
+              <tr>
+                  <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="KeyWord" value="Encontrada" checked=checked class="custom-control-input" id="c9">
+                        <label class="custom-control-label" for="c9">Encontrada</label>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="KeyWord" value="búsqueda" checked=checked class="custom-control-input" id="c10">
+                        <label class="custom-control-label" for="c10">búsqueda</label>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="KeyWord" value="Comparte" checked=checked class="custom-control-input" id="c11">
+                        <label class="custom-control-label" for="c11">Comparte</label>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="KeyWord" value="encontrado" class="custom-control-input" id="c12">
+                        <label class="custom-control-label" for="c12">encontrado</label>
+                      </div>
+                  </td>
+              </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="mb-3">
+              <label for="address2">Mas palabras claves: <span class="text-muted">(Opcional)</span></label>
+              <input type="text" class="form-control" id="address2" name="KeyWord" placeholder="Adiciona mas palabras clave separado por espacios">
+        </div>
+        <!--end table-->
+
+        <!--End checkboxs-->
+
+        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-secondary rounded box-shadow">
+        <!--<img class="mr-3" src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">-->
+        <div class="lh-100">
+          <h6 class="mb-0 text-white lh-100">Buscar Desde la Fecha:</h6>
+          <!--<small>Since 2011</small>-->
+        </div>
+      </div>
+    <!--<h3>since_date</h3><br/>-->
+    <input type="date" name="since_date_in">
+        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-secondary rounded box-shadow">
+        <!--<img class="mr-3" src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">-->
+        <div class="lh-100">
+          <h6 class="mb-0 text-white lh-100">Buscar Hasta la Fecha</h6>
+          <!--<small>Since 2011</small>-->
+        </div>
+      </div>
+    <!--<h3>until_date</h3><br/>-->
+    <input type="date" name="until_date_in">
+    <br/><br/>
+    <input type="submit" class="btn btn-success" value="Scraping Posts" />
+        <br/><br/>
+    </div>
+</form>
+</div>
+<!--<a href="{% url 'about' %}">about</a>-->
+
+{% include "datamining\t_javascript.html" %}
+<script>
+    function selectall(source) {
+      checkboxes = document.getElementsByName('groupId');
+      for(var i=0, n=checkboxes.length;i<n;i++) {
+         checkboxes[i].checked = source.checked;
+      }
+    }
+</script>
+</body>
+</html>
